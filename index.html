@@ -77,9 +77,7 @@
     { text: "Eine Auszubildende in der Ergotherapie reflektiert nach einer Praktikumsphase darüber, wie sie die Bedürfnisse ihrer Patienten besser verstehen kann. Sie entwickelt Techniken, um sich in die Perspektive der Patienten hineinzuversetzen, und passt ihre Therapieansätze entsprechend an.", kompetenz: 12 },
     { text: "Ein Auszubildender in der Orthopädieschuhtechnik entwickelt ein neues Modell für orthopädische Schuhe, ohne auf die individuellen Bedürfnisse der Träger einzugehen. Er berücksichtigt die Erfahrungen und Herausforderungen der Menschen nicht, die die Schuhe später tragen werden.", kompetenz: 12 }
 ];
-
-
-        // Liste der Gestaltungskompetenzen und Beschreibungen
+// Liste der Gestaltungskompetenzen und Beschreibungen
         const kompetenzen = [
             { nummer: 1, name: "Weltoffen und neue Perspektiven integrierend Wissen aufbauen", beschreibung: "Offen für verschiedene Ansichten und Ideen sein, Wissen aus unterschiedlichen Perspektiven integrieren, um die eigenen Kenntnisse zu erweitern." },
             { nummer: 2, name: "Vorausschauend Entwicklungen analysieren und beurteilen können", beschreibung: "Die Fähigkeit, zukünftige Entwicklungen und Trends zu erkennen, sie zu bewerten und Entscheidungen auf Basis möglicher Veränderungen zu treffen." },
@@ -102,18 +100,24 @@
             aktuellesSzenario = szenarien[Math.floor(Math.random() * szenarien.length)];
             document.getElementById('article').innerText = aktuellesSzenario.text;
             document.getElementById('antwort').innerHTML = '';  // Antwort zurücksetzen
+            document.getElementById('neues-szenario-btn').style.display = 'none'; // Verstecke den "Nächstes Szenario"-Button
         }
 
         // Funktion, um die gewählte Gestaltungskompetenz zu überprüfen
-        function kompetenzWaehlen(gewahlteKompetenz) {
+        function kompetenzUeberpruefen() {
+            const gewahlteKompetenz = document.getElementById('kompetenz-auswahl').value;
             const richtigeKompetenz = kompetenzen.find(k => k.nummer === aktuellesSzenario.kompetenz);
-            const gewahlte = kompetenzen.find(k => k.nummer === gewahlteKompetenz);
+            const gewahlte = kompetenzen.find(k => k.nummer == gewahlteKompetenz);
 
-            if (gewahlteKompetenz === aktuelleSzenario.kompetenz) {
-                document.getElementById('antwort').innerHTML = `Ja, das passt gut. Bei der Gestaltungskompetenz '${richtigeKompetenz.name}' geht es darum: ${richtigeKompetenz.beschreibung}`;
+            let antwortText = '';
+            if (gewahlteKompetenz == aktuelleSzenario.kompetenz) {
+                antwortText = `Ja, das passt gut. Bei der Gestaltungskompetenz '${richtigeKompetenz.name}' geht es darum: ${richtigeKompetenz.beschreibung}`;
             } else {
-                document.getElementById('antwort').innerHTML = `Das könnte auch passen. Alternativ wäre auch Gestaltungskompetenz '${richtigeKompetenz.name}' denkbar. Hier geht es darum: ${richtigeKompetenz.beschreibung}`;
+                antwortText = `Das könnte auch passen. Alternativ wäre auch Gestaltungskompetenz '${richtigeKompetenz.name}' denkbar. Hier geht es darum: ${richtigeKompetenz.beschreibung}`;
             }
+
+            document.getElementById('antwort').innerHTML = antwortText;
+            document.getElementById('neues-szenario-btn').style.display = 'block'; // Zeige den "Nächstes Szenario"-Button
         }
     </script>
 </head>
@@ -127,29 +131,36 @@
             <!-- Hier wird ein zufällig ausgewähltes Szenario angezeigt -->
         </article>
 
-        <div id="buttons">
-            <!-- Buttons für jede Gestaltungskompetenz -->
-            <button onclick="kompetenzWaehlen(1)">Gestaltungskompetenz 1</button>
-            <button onclick="kompetenzWaehlen(2)">Gestaltungskompetenz 2</button>
-            <button onclick="kompetenzWaehlen(3)">Gestaltungskompetenz 3</button>
-            <button onclick="kompetenzWaehlen(4)">Gestaltungskompetenz 4</button>
-            <button onclick="kompetenzWaehlen(5)">Gestaltungskompetenz 5</button>
-            <button onclick="kompetenzWaehlen(6)">Gestaltungskompetenz 6</button>
-            <button onclick="kompetenzWaehlen(7)">Gestaltungskompetenz 7</button>
-            <button onclick="kompetenzWaehlen(8)">Gestaltungskompetenz 8</button>
-            <button onclick="kompetenzWaehlen(9)">Gestaltungskompetenz 9</button>
-            <button onclick="kompetenzWaehlen(10)">Gestaltungskompetenz 10</button>
-            <button onclick="kompetenzWaehlen(11)">Gestaltungskompetenz 11</button>
-            <button onclick="kompetenzWaehlen(12)">Gestaltungskompetenz 12</button>
-        </div>
+        <label for="kompetenz-auswahl">Wähle eine Gestaltungskompetenz:</label>
+        <select id="kompetenz-auswahl">
+            <option value="1">Weltoffen und neue Perspektiven integrierend Wissen aufbauen</option>
+            <option value="2">Vorausschauend Entwicklungen analysieren und beurteilen können</option>
+            <option value="3">Interdisziplinär Erkenntnisse gewinnen und handeln</option>
+            <option value="4">Risiken, Gefahren und Unsicherheiten erkennen und abwägen können</option>
+            <option value="5">Gemeinsam mit anderen planen und handeln können</option>
+            <option value="6">Zielkonflikte bei der Reflexion über Handlungsstrategien berücksichtigen können</option>
+            <option value="7">An kollektiven Entscheidungsprozessen teilhaben können</option>
+            <option value="8">Sich und andere motivieren können, aktiv zu werden</option>
+            <option value="9">Die eigenen Leitbilder und die anderer reflektieren können</option>
+            <option value="10">Vorstellungen von Gerechtigkeit als Entscheidungs- und Handlungsgrundlage nutzen können</option>
+            <option value="11">Selbständig planen und handeln können</option>
+            <option value="12">Empathie für andere zeigen können</option>
+        </select>
+
+        <button onclick="kompetenzUeberpruefen()">Überprüfen</button>
 
         <div id="antwort">
             <!-- Hier wird die Rückmeldung angezeigt -->
         </div>
 
-        <button onclick="neuesSzenario()">Nächstes Szenario</button>
+        <button id="neues-szenario-btn" onclick="neuesSzenario()" style="display:none;">Nächstes Szenario</button>
 
     </main>
 
     <footer class="container">
-        <small>Erstellt für den BNE-Lerntag an der Alice-Salomon Schule in Hannover am 1. Oktober 2024 von <a href="https://ebildungslabor.de">Nele Hirsch (ebildungslabor)</a> • Lizenz: <a href="https://creativecommons.org/publicdomain/zero/1.0
+        <small>Erstellt für den BNE-Lerntag an der Alice-Salomon Schule in Hannover am 1. Oktober 2024 von <a href="https://ebildungslabor.de">Nele Hirsch (ebildungslabor)</a> • Lizenz: <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.de">CC0 1.0</a></small>
+    </footer>
+
+</body>
+
+</html>
