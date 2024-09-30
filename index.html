@@ -9,13 +9,13 @@
     <script>
         // Liste aller Szenarien und zugehörige richtige Gestaltungskompetenzen
         const szenarien = [
-            { text: "Eine Lehrkraft in der Augenoptik lässt die Auszubildenden unterschiedliche Techniken zur Brillenglasbestimmung miteinander vergleichen. Sie regt die Lernenden an, auch unkonventionelle Ansätze und Erfahrungen aus der Praxis einzubeziehen, die von verschiedenen Herstellern oder internationalen Fachkonferenzen stammen, um neue Blickwinkel zu erhalten und das Wissen zu erweitern.", kompetenz: 1 },
-            { text: "Ein Lehrer in der Zahntechnik fokussiert sich ausschließlich auf die nationalen Standards für Zahnprothesen und lässt keine Diskussion über alternative Verfahren zu, die in anderen Ländern oder Disziplinen genutzt werden. Er betont, dass die nationalen Richtlinien vollkommen ausreichen und es keinen Nutzen hat, andere Perspektiven zu integrieren.", kompetenz: 1 },
-            { text: "Eine Auszubildende in der Ergotherapie arbeitet in einer Projektgruppe, die eine neue Therapiemethode entwickelt. Sie schlägt vor, auch Erkenntnisse aus der Musiktherapie zu integrieren, um den Patienten einen ganzheitlicheren Ansatz anzubieten. Sie bringt dabei Ideen aus verschiedenen Disziplinen ein, um das Projekt zu bereichern.", kompetenz: 1 },
+            { text: "Eine Lehrkraft in der Augenoptik lässt die Auszubildenden unterschiedliche Techniken zur Brillenglasbestimmung miteinander vergleichen. Sie regt die Lernenden an, auch unkonventionelle Ansätze und Erfahrungen aus der Praxis einzubeziehen, die von verschiedenen Herstellern oder internationalen Fachkonferenzen stammen.", kompetenz: 1 },
+            { text: "Ein Lehrer in der Zahntechnik fokussiert sich ausschließlich auf die nationalen Standards für Zahnprothesen und lässt keine Diskussion über alternative Verfahren zu, die in anderen Ländern oder Disziplinen genutzt werden. Er betont, dass die nationalen Richtlinien vollkommen ausreichen.", kompetenz: 1 },
+            { text: "Eine Auszubildende in der Ergotherapie arbeitet in einer Projektgruppe, die eine neue Therapiemethode entwickelt. Sie schlägt vor, auch Erkenntnisse aus der Musiktherapie zu integrieren, um den Patienten einen ganzheitlicheren Ansatz anzubieten.", kompetenz: 1 },
             { text: "Ein Auszubildender in der Orthopädieschuhtechnik bleibt bei der Entwicklung eines neuen Schuhmodells strikt bei den traditionellen Methoden, obwohl im Unterricht auf neue, innovative Materialien hingewiesen wurde. Er lehnt es ab, alternative Vorschläge seiner Mitschüler zu berücksichtigen, die von neuen Entwicklungen im 3D-Druck gehört haben.", kompetenz: 1 },
             
             { text: "In einem Kurs für medizinische Fachangestellte führt eine Lehrkraft die Gruppe durch eine Übung, bei der sie zukünftige Entwicklungen in der Telemedizin vorausschauend analysieren sollen. Sie fordert die Lernenden auf, verschiedene Zukunftsszenarien durchzuspielen und deren Einfluss auf die Patientenversorgung zu bewerten, um auf Veränderungen vorbereitet zu sein.", kompetenz: 2 },
-            { text: "Eine Lehrerin in der Heilpädagogik spricht über Trends in der Inklusionsarbeit, geht aber nur auf die aktuellen Methoden ein und vermeidet Diskussionen darüber, wie sich die Anforderungen an Heilpädagogen in den nächsten Jahren verändern könnten. Sie übersieht die Möglichkeit, die Lernenden auf zukünftige Herausforderungen vorzubereiten.", kompetenz: 2 },
+            { text: "Eine Lehrerin in der Heilpädagogik spricht über Trends in der Inklusionsarbeit, geht aber nur auf die aktuellen Methoden ein und vermeidet Diskussionen darüber, wie sich die Anforderungen an Heilpädagogen in den nächsten Jahren verändern könnten.", kompetenz: 2 },
             { text: "Eine angehende Augenoptikerin entwickelt in einem Projekt eine neue Methode zur Kundenberatung. Sie überlegt dabei, wie sich die Anforderungen der Kunden in Zukunft durch technische Innovationen verändern könnten und passt ihre Beratungsmethoden dementsprechend an. Sie präsentiert ihrer Gruppe auch Ideen für zukünftige Anpassungen.", kompetenz: 2 },
             { text: "Ein Auszubildender in der Sozialpädagogik reflektiert über die aktuellen Arbeitsmethoden, bleibt jedoch ausschließlich bei den bewährten Ansätzen und denkt nicht darüber nach, wie sich die Sozialarbeit in den nächsten Jahren durch gesellschaftliche oder technische Veränderungen weiterentwickeln könnte.", kompetenz: 2 },
             
@@ -27,7 +27,7 @@
             { text: "Eine Lehrerin in der Sozialpädagogik leitet eine Übung, bei der die Lernenden verschiedene Risiken bei der Betreuung von Jugendlichen mit problematischen Hintergründen erkennen und abwägen müssen. Sie ermutigt die Lernenden, auch unsichere und unklare Situationen zu berücksichtigen und gemeinsam Strategien zu entwickeln, um Gefahren frühzeitig zu erkennen.", kompetenz: 4 },
             { text: "Ein Lehrer in der Orthopädieschuhtechnik gibt den Lernenden eine Aufgabe, bei der sie ein neues Schuhmodell entwerfen sollen, diskutiert jedoch nicht, welche Risiken und Gefahren die verwendeten Materialien haben könnten. Er geht nur auf die technischen Anforderungen ein und vernachlässigt die Sicherheitsaspekte.", kompetenz: 4 },
             { text: "Eine angehende medizinische Fachangestellte arbeitet an einem Projekt zur Verbesserung der Hygienestandards in einer Arztpraxis. Sie analysiert nicht nur die aktuellen Vorschriften, sondern auch potenzielle Risiken, die durch neue Krankheitswellen entstehen könnten, und wägt diese Risiken gemeinsam mit ihrer Gruppe ab.", kompetenz: 4 },
-            { text: "Ein Auszubildender in der Zahntechnik entwickelt einen neuen Ansatz zur Fertigung von Zahnkronen, analysiert jedoch nicht die potenziellen Risiken des verwendeten Materials für Patienten, obwohl er von möglichen Allergien und Unverträglichkeiten weiß. Er ignoriert die Risiken und konzentriert sich nur auf die Funktionalität.", kompetenz: 4 },
+            { text: "Ein Auszubildender in der Zahntechnik entwickelt einen neuen Ansatz zur Fertigung von Zahnkronen, analysiert jedoch nicht die potenziellen Risiken des verwendeten Materials für Patienten, obwohl er von möglichen Allergien und Unverträglichkeiten weiß. Er konzentriert sich nur auf die Funktionalität.", kompetenz: 4 },
             
            // 5. Gemeinsam mit anderen planen und handeln können
     { text: "Eine Lehrkraft in der Augenoptik organisiert ein Gruppenprojekt, bei dem die Auszubildenden eine Marketingkampagne für Brillengläser entwickeln. Sie zeigt der Gruppe, wie sie die Aufgaben aufteilen und ihre individuellen Stärken nutzen können, um das Ziel gemeinsam zu erreichen.", kompetenz: 5 },
@@ -126,8 +126,8 @@
 <body onload="neuesSzenario()">
 
     <main class="container">
-        <h1>Zu welcher Gestaltungskompetenz passt das folgende fiktive pädagogische Szenario?</h1>
-
+        <h1>Zu welcher Gestaltungskompetenz passt das folgende fiktive pädagogische Szenario und wie könnte es in deinen Bereich übertragen werden?</h1>
+<p>Die Beispiele stehen für positive und negative Ausprägungen. Es gibt immer mehrere Möglichkeiten. Ziel ist die Reflexion der unterschiedlichen Gestaltungskompetenzen.</p>
         <article id="article">
             <!-- Hier wird ein zufällig ausgewähltes Szenario angezeigt -->
         </article>
