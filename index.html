@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/pico.min.css">
+    <title>Reflexion zu Gestaltungskompetenz</title>
+    <script>
+        // Liste aller Szenarien
+        const szenarien = [
+            // 1. Weltoffen und neue Perspektiven integrierend Wissen aufbauen
+            "Eine Lehrkraft in der Augenoptik lässt die Auszubildenden unterschiedliche Techniken zur Brillenglasbestimmung miteinander vergleichen. Sie regt die Lernenden an, auch unkonventionelle Ansätze und Erfahrungen aus der Praxis einzubeziehen, die von verschiedenen Herstellern oder internationalen Fachkonferenzen stammen, um neue Blickwinkel zu erhalten und das Wissen zu erweitern.",
+            "Ein Lehrer in der Zahntechnik fokussiert sich ausschließlich auf die nationalen Standards für Zahnprothesen und lässt keine Diskussion über alternative Verfahren zu, die in anderen Ländern oder Disziplinen genutzt werden. Er betont, dass die nationalen Richtlinien vollkommen ausreichen und es keinen Nutzen hat, andere Perspektiven zu integrieren.",
+            "Eine Auszubildende in der Ergotherapie arbeitet in einer Projektgruppe, die eine neue Therapiemethode entwickelt. Sie schlägt vor, auch Erkenntnisse aus der Musiktherapie zu integrieren, um den Patienten einen ganzheitlicheren Ansatz anzubieten. Sie bringt dabei Ideen aus verschiedenen Disziplinen ein, um das Projekt zu bereichern.",
+            "Ein Auszubildender in der Orthopädieschuhtechnik bleibt bei der Entwicklung eines neuen Schuhmodells strikt bei den traditionellen Methoden, obwohl im Unterricht auf neue, innovative Materialien hingewiesen wurde. Er lehnt es ab, alternative Vorschläge seiner Mitschüler zu berücksichtigen, die von neuen Entwicklungen im 3D-Druck gehört haben.",
+            
+            // 2. Vorausschauend Entwicklungen analysieren und beurteilen können
+            "In einem Kurs für medizinische Fachangestellte führt eine Lehrkraft die Gruppe durch eine Übung, bei der sie zukünftige Entwicklungen in der Telemedizin vorausschauend analysieren sollen. Sie fordert die Lernenden auf, verschiedene Zukunftsszenarien durchzuspielen und deren Einfluss auf die Patientenversorgung zu bewerten, um auf Veränderungen vorbereitet zu sein.",
+            "Eine Lehrerin in der Heilpädagogik spricht über Trends in der Inklusionsarbeit, geht aber nur auf die aktuellen Methoden ein und vermeidet Diskussionen darüber, wie sich die Anforderungen an Heilpädagogen in den nächsten Jahren verändern könnten. Sie übersieht die Möglichkeit, die Lernenden auf zukünftige Herausforderungen vorzubereiten.",
+            "Eine angehende Augenoptikerin entwickelt in einem Projekt eine neue Methode zur Kundenberatung. Sie überlegt dabei, wie sich die Anforderungen der Kunden in Zukunft durch technische Innovationen verändern könnten und passt ihre Beratungsmethoden dementsprechend an. Sie präsentiert ihrer Gruppe auch Ideen für zukünftige Anpassungen.",
+            "Ein Auszubildender in der Sozialpädagogik reflektiert über die aktuellen Arbeitsmethoden, bleibt jedoch ausschließlich bei den bewährten Ansätzen und denkt nicht darüber nach, wie sich die Sozialarbeit in den nächsten Jahren durch gesellschaftliche oder technische Veränderungen weiterentwickeln könnte.",
+            
+            // 3. Interdisziplinär Erkenntnisse gewinnen und handeln
+            "Eine Lehrerin in der Ergotherapie plant ein Projekt, bei dem Lernende interdisziplinär arbeiten müssen, um gemeinsam ein umfassendes Konzept für die Behandlung von Schlaganfallpatienten zu entwickeln. Sie fordert die Gruppe auf, Wissen aus verschiedenen Bereichen wie Physiotherapie, Psychologie und Ergotherapie zusammenzuführen, um den besten Ansatz zu finden.",
+            "Ein Lehrer in der Zahntechnik behandelt den Einsatz von Implantaten und zeigt den Lernenden nur technische Ansätze aus dem eigenen Fachbereich. Er ermutigt sie nicht, Informationen aus anderen medizinischen Bereichen wie der Kieferchirurgie oder der Prothetik einzubeziehen, die helfen könnten, das Thema ganzheitlicher zu betrachten.",
+            "Eine Auszubildende in der Heilpädagogik arbeitet mit einem interdisziplinären Team aus Logopäden und Psychologen zusammen, um ein Förderprogramm für Kinder mit Sprachentwicklungsstörungen zu entwickeln. Sie bringt Erkenntnisse aus ihrer eigenen Ausbildung ein und integriert auch die Ansätze der anderen Disziplinen in den Plan.",
+            "Ein Auszubildender in der Orthopädieschuhtechnik arbeitet an einem Projekt zur Entwicklung neuer orthopädischer Einlagen, bezieht jedoch nur die technischen Aspekte seiner Ausbildung ein und vermeidet den Austausch mit Physiotherapeuten oder Medizinern, die zusätzliche hilfreiche Perspektiven hätten liefern können.",
+            
+            // 4. Risiken, Gefahren und Unsicherheiten erkennen und abwägen können
+            "Eine Lehrerin in der Sozialpädagogik leitet eine Übung, bei der die Lernenden verschiedene Risiken bei der Betreuung von Jugendlichen mit problematischen Hintergründen erkennen und abwägen müssen. Sie ermutigt die Lernenden, auch unsichere und unklare Situationen zu berücksichtigen und gemeinsam Strategien zu entwickeln, um Gefahren frühzeitig zu erkennen.",
+            "Ein Lehrer in der Orthopädieschuhtechnik gibt den Lernenden eine Aufgabe, bei der sie ein neues Schuhmodell entwerfen sollen, diskutiert jedoch nicht, welche Risiken und Gefahren die verwendeten Materialien haben könnten. Er geht nur auf die technischen Anforderungen ein und vernachlässigt die Sicherheitsaspekte.",
+            "Eine angehende medizinische Fachangestellte arbeitet an einem Projekt zur Verbesserung der Hygienestandards in einer Arztpraxis. Sie analysiert nicht nur die aktuellen Vorschriften, sondern auch potenzielle Risiken, die durch neue Krankheitswellen entstehen könnten, und wägt diese Risiken gemeinsam mit ihrer Gruppe ab.",
+            "Ein Auszubildender in der Zahntechnik entwickelt einen neuen Ansatz zur Fertigung von Zahnkronen, analysiert jedoch nicht die potenziellen Risiken des verwendeten Materials für Patienten, obwohl er von möglichen Allergien und Unverträglichkeiten weiß. Er ignoriert die Risiken und konzentriert sich nur auf die Funktionalität.",
+            
+            // 5. Gemeinsam mit anderen planen und handeln können
+            "Eine Lehrkraft in der Augenoptik organisiert ein Gruppenprojekt, bei dem die Auszubildenden eine Marketingkampagne für Brillengläser entwickeln. Sie zeigt der Gruppe, wie sie die Aufgaben aufteilen und ihre individuellen Stärken nutzen können, um das Ziel gemeinsam zu erreichen.",
+            "Ein Lehrer in der Ergotherapie gibt der Klasse eine Gruppenaufgabe, gibt jedoch keine Hinweise zur Organisation der Zusammenarbeit. Die Lernenden wissen nicht, wie sie effektiv als Team arbeiten sollen, und das Projekt leidet unter mangelnder Kommunikation und Koordination.",
+            "Eine Auszubildende in der Zahntechnik organisiert ein Gruppenprojekt, bei dem es um die Entwicklung eines neuen Zahnprothesenmodells geht. Sie teilt die Aufgaben unter den Gruppenmitgliedern auf, motiviert das Team und sorgt dafür, dass alle einen Beitrag leisten, um das Projekt erfolgreich abzuschließen.",
+            "Ein Auszubildender in der Heilpädagogik arbeitet in einer Gruppe an einem Konzept zur Förderung von Kindern mit besonderen Bedürfnissen, übernimmt jedoch keine Verantwortung für die Planung. Die Gruppe zerstreitet sich über die Aufgabenverteilung, und das Projekt wird nicht erfolgreich abgeschlossen.",
+            
+            // 6. Zielkonflikte bei der Reflexion über Handlungsstrategien berücksichtigen können
+            "Eine Lehrerin in der Sozialpädagogik leitet ein Projekt, bei dem die Lernenden die Bedürfnisse verschiedener Interessengruppen in einem Sozialprojekt berücksichtigen müssen. Sie fördert die Reflexion über mögliche Zielkonflikte, zum Beispiel zwischen den Wünschen der Familien und den verfügbaren Ressourcen der Einrichtung.",
+            "Ein Lehrer in der Augenoptik gibt eine Aufgabe zur Preisgestaltung von Brillen und Gläsern, behandelt jedoch nicht die Konflikte zwischen der Gewinnmaximierung und der sozialen Verantwortung, erschwingliche Produkte anzubieten. Die Lernenden sollen das Thema nur unter dem Gesichtspunkt der Wirtschaftlichkeit bearbeiten.",
+            "Eine angehende Ergotherapeutin reflektiert im Rahmen eines Projekts darüber, wie ihre Therapiemethoden den unterschiedlichen Bedürfnissen von Patienten gerecht werden. Sie erkennt dabei, dass einige ihrer Ansätze zwar kurzfristig Erfolge bringen, aber langfristig Zielkonflikte entstehen könnten, die sie neu überdenkt.",
+            "Ein Auszubildender in der Orthopädieschuhtechnik entwickelt ein neues Schuhmodell, ohne dabei die unterschiedlichen Anforderungen der potenziellen Träger zu berücksichtigen. Er übersieht mögliche Zielkonflikte zwischen Komfort und Ästhetik und konzentriert sich nur auf die schnelle Produktion.",
+            
+            // 7. An kollektiven Entscheidungsprozessen teilhaben können
+            "Eine Lehrkraft in der Berufsschule integriert regelmäßig Abstimmungen und Diskussionen in den Unterricht, bei denen die Lernenden gemeinsam Entscheidungen treffen. Dabei fördert sie eine offene Kommunikation und zeigt, wie man auf faire Weise Kompromisse erzielt.",
+            "Ein Lehrer im Bereich Einzelhandel trifft alle Entscheidungen für die Gruppe alleine, ohne die Lernenden in den Prozess einzubeziehen. Obwohl das Projektteam viele Ideen hat, werden diese nicht berücksichtigt, und die Lernenden erfahren nicht, wie sie an kollektiven Entscheidungen mitwirken können.",
+            "Ein Auszubildender im Bereich Mediengestaltung übernimmt in einem Projekt die Leitung, stellt jedoch sicher, dass alle Teammitglieder mitentscheiden können. Er ermutigt seine Kollegen, ihre Ideen einzubringen, und sorgt dafür, dass die Gruppe demokratisch über die beste Vorgehensweise abstimmt.",
+            "Ein Auszubildender im Bereich Elektrotechnik übernimmt in einem Teamprojekt die Führung, lässt jedoch die anderen Lernenden kaum zu Wort kommen. Er trifft alle Entscheidungen alleine und übersieht dabei die Möglichkeit, die kollektive Intelligenz des Teams zu nutzen.",
+            
+            // 8. Sich und andere motivieren können, aktiv zu werden
+            "Eine Lehrkraft in der Ergotherapie entwickelt ein Projekt, bei dem die Lernenden selbstständig kreative Therapiemethoden entwickeln und ausprobieren können. Sie motiviert die Gruppe, eigene Ideen zu verfolgen und auch unkonventionelle Ansätze zu testen, um die besten Lösungen zu finden.",
+            "Ein Lehrer in der Zahntechnik gibt eine Gruppenaufgabe, bei der die Lernenden eine Prothese entwickeln sollen, unterstützt sie jedoch nicht dabei, Eigeninitiative zu ergreifen. Viele der Lernenden fühlen sich dadurch demotiviert und arbeiten nur passiv an der Aufgabe.",
+            "Eine Auszubildende im Bereich medizinische Fachangestellte organisiert eigenständig eine Informationsveranstaltung in der Schule, um ihre Mitschüler*innen über neue Hygienestandards zu informieren. Sie schafft es, andere Lernende zu motivieren, sich ebenfalls aktiv an der Veranstaltung zu beteiligen.",
+            "Ein Auszubildender im Bereich Orthopädieschuhtechnik wird in einer Gruppenarbeit nicht aktiv und wartet darauf, dass die anderen Teammitglieder die Aufgaben übernehmen. Er zeigt kein Interesse, das Projekt voranzutreiben oder eigene Ideen einzubringen.",
+            
+            // 9. Die eigenen Leitbilder und die anderer reflektieren können
+            "Eine Lehrkraft in der Heilpädagogik lässt die Lernenden in einem Workshop ihre eigenen Werte und Leitbilder reflektieren, die sie in der Arbeit mit Menschen mit Behinderung anwenden. Sie ermutigt die Lernenden, sich auch mit den Werten der Menschen auseinanderzusetzen, die sie betreuen werden.",
+            "Ein Lehrer im Bereich Ergotherapie gibt eine Aufgabe, bei der die Lernenden verschiedene Therapiemethoden diskutieren sollen, lässt aber keinen Raum für die Reflexion persönlicher Leitbilder oder Werte. Die Diskussion bleibt rein fachlich, und die Lernenden hinterfragen ihre eigenen Ansichten nicht.",
+            "Eine Auszubildende in der Sozialpädagogik arbeitet in einem Projekt, bei dem sie über ihre eigenen Werte nachdenkt und diese im Kontext ihrer Arbeit mit sozial benachteiligten Jugendlichen reflektiert. Sie diskutiert diese Erfahrungen auch mit ihren Mitschüler*innen, um von anderen Sichtweisen zu lernen.",
+            "Ein Auszubildender in der Augenoptik arbeitet im Verkauf, reflektiert jedoch nicht, dass seine Verkaufsstrategien stark von seinen eigenen Vorstellungen geprägt sind. Er hinterfragt weder seine Werte noch berücksichtigt er die verschiedenen Wertvorstellungen der Kunden, die er berät.",
+            
+            // 10. Vorstellungen von Gerechtigkeit als Entscheidungs- und Handlungsgrundlage nutzen können
+            "Eine Lehrerin in der Sozialpädagogik diskutiert mit den Lernenden verschiedene Fallbeispiele, in denen sie ihre Vorstellungen von Gerechtigkeit als Entscheidungsgrundlage nutzen müssen. Sie stellt die Frage, wie Ressourcen gerecht verteilt werden können, und ermutigt die Lernenden, verschiedene Perspektiven zu betrachten.",
+            "Ein Lehrer im Bereich Heilpädagogik behandelt in einer Fallstudie das Thema Inklusion, geht jedoch nicht auf Fragen von Gerechtigkeit oder Fairness ein. Die Lernenden sollen sich nur auf die praktische Umsetzung konzentrieren, ohne darüber nachzudenken, welche moralischen Entscheidungen hinter den Maßnahmen stehen.",
+            "Eine Auszubildende in der Ergotherapie reflektiert im Rahmen eines Praktikums darüber, wie sie ihre Patienten gerecht behandeln kann. Sie erkennt, dass bestimmte Therapiemethoden für einige Patienten nicht zugänglich sind, und überlegt, wie sie ihre Arbeit fairer gestalten kann.",
+            "Ein Auszubildender in der Zahntechnik entwickelt eine neue Methode zur Herstellung von Zahnprothesen, berücksichtigt jedoch nicht, dass einige Patienten sich die teureren Materialien nicht leisten können. Er reflektiert nicht, welche Rolle Gerechtigkeit in der Auswahl der Materialien spielen könnte.",
+            
+            // 11. Selbständig planen und handeln können
+            "Eine Lehrerin in der Augenoptik gibt den Lernenden die Aufgabe, eigenständig einen Plan zur Verbesserung der Kundenberatung zu erstellen. Sie unterstützt die Lernenden dabei, ihre eigenen Ideen zu entwickeln und ihre Pläne in der Praxis umzusetzen.",
+            "Ein Lehrer in der Ergotherapie gibt eine Aufgabe, die die Lernenden zwar selbstständig bearbeiten sollen, gibt ihnen jedoch so viele Vorgaben, dass sie kaum noch eigene Entscheidungen treffen können. Die Lernenden fühlen sich eingeengt und entwickeln wenig Eigeninitiative.",
+            "Eine Auszubildende im Bereich medizinische Fachangestellte plant eigenständig ein Projekt zur Verbesserung der Patientenkommunikation in ihrer Praxis. Sie entwirft einen detaillierten Plan, setzt ihn um und evaluiert anschließend die Ergebnisse, ohne auf die ständige Anleitung ihrer Lehrkraft angewiesen zu sein.",
+            "Ein Auszubildender in der Zahntechnik wird mit der Aufgabe betraut, eigenständig eine neue Prothese zu entwerfen, bleibt jedoch passiv und wartet auf die Anweisungen der Lehrkraft. Er entwickelt keine eigenen Lösungsansätze und verlässt sich auf die vorgegebenen Schritte.",
+            
+            // 12. Empathie für andere zeigen können
+            "Eine Lehrerin in der Sozialpädagogik führt ein Rollenspiel durch, bei dem die Lernenden die Perspektive von sozial benachteiligten Familien einnehmen. Die Lernenden sollen erleben, welche Herausforderungen diese Familien im Alltag haben und gemeinsam reflektieren, wie sie in ihrer Arbeit als Sozialpädagogen empathisch handeln können.",
+            "Ein Lehrer im Bereich Augenoptik erklärt die technischen Aspekte der Brillenanpassung, geht aber nicht darauf ein, wie wichtig es ist, die Bedürfnisse und Sorgen der Kunden zu verstehen. Die Lernenden entwickeln dadurch wenig Empathie für die Menschen, die sie später beraten werden.",
+            "Eine Auszubildende in der Ergotherapie reflektiert nach einer Praktikumsphase darüber, wie sie die Bedürfnisse ihrer Patienten besser verstehen kann. Sie entwickelt Techniken, um sich in die Perspektive der Patienten hineinzuversetzen, und passt ihre Therapieansätze entsprechend an.",
+            "Ein Auszubildender in der Orthopädieschuhtechnik entwickelt ein neues Modell für orthopädische Schuhe, ohne auf die individuellen Bedürfnisse der Träger einzugehen. Er berücksichtigt die Erfahrungen und Herausforderungen der Menschen nicht, die die Schuhe später tragen werden.",
+        ];
+
+        // Funktion, um ein zufälliges Szenario auszuwählen und anzuzeigen
+        function neuesSzenario() {
+            const zufaelligesSzenario = szenarien[Math.floor(Math.random() * szenarien.length)];
+            document.getElementById('article').innerText = zufaelligesSzenario;
+        }
+    </script>
+</head>
+
+<body onload="neuesSzenario()">
+
+    <main class="container">
+        <h1>Zu welcher Gestaltungskompetenz passt das folgende fiktive pädagogische Szenario?</h1>
+
+        <article id="article">
+            <!-- Hier wird ein zufällig ausgewähltes Szenario angezeigt -->
+        </article>
+
+        <button onclick="neuesSzenario()">Neues Szenario</button>
+    </main>
+
+    <footer class="container">
+        <small>Erstellt für den BNE-Lerntag an der Alice-Salomon Schule in Hannover am 1. Oktober 2024 von <a href="https://ebildungslabor.de">Nele Hirsch (ebildungslabor)</a> • Lizenz: <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.de">CC0 1.0</a></small>
+    </footer>
+
+</body>
+
+</html>
